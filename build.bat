@@ -7,7 +7,7 @@ setlocal
 
 set SRC=main.c src\house.c src\render.c src\ui.c src\platform.c src\demo.c
 
-gcc -std=c99 -Wall -Wextra -Iinclude -o house.exe %SRC%
+"C:\mingw64\bin\gcc.exe" -std=c99 -Wall -Wextra -Iinclude -o house.exe %SRC%
 if errorlevel 1 goto fail
 
 echo Build OK.  Run:  house.exe
