@@ -379,55 +379,55 @@ your screen — that column is how it will be marked.
 
 | Done | # | Function | FR | Requires | Proof it works |
 |:----:|---|----------|----|----------|----------------|
-| [ ] | **1/6** | `houseInit()` | FR-03 | — | Cards show Living / Kitchen / Bedroom / Bathroom / Hall / Garage, all `AUTO`; Living and Hall say `people: yes` |
-| [ ] | **2/6** | `tempC()` | FR-05 | — | ADC 51 → 24 C, ADC 96 → 46 C, ADC 1023 → 499 C; the bars fill in |
-| [ ] | **3/6** | `applyRules()` | FR-10 | 2/6 | *(prove it with 4/6)* |
-| [ ] | **4/6** | `rulesPass()` | FR-10 | 3/6 | Menu **7** runs the whole evening: lamps follow people, Kitchen fan starts, Garage alarms |
-| [ ] | **5/6** | `countRoomsWith()` | FR-11 | — | Report counters match what you can count on the schematic |
-| [ ] | **6/6** | `sumAdc()` — **recursive** | FR-11 | — | Report shows raw sum **363**, average **29 C** |
+| [X] | **1/6** | `houseInit()` | FR-03 | — | Cards show Living / Kitchen / Bedroom / Bathroom / Hall / Garage, all `AUTO`; Living and Hall say `people: yes` |
+| [X] | **2/6** | `tempC()` | FR-05 | — | ADC 51 → 24 C, ADC 96 → 46 C, ADC 1023 → 499 C; the bars fill in |
+| [X] | **3/6** | `applyRules()` | FR-10 | 2/6 | *(prove it with 4/6)* |
+| [X] | **4/6** | `rulesPass()` | FR-10 | 3/6 | Menu **7** runs the whole evening: lamps follow people, Kitchen fan starts, Garage alarms |
+| [X] | **5/6** | `countRoomsWith()` | FR-11 | — | Report counters match what you can count on the schematic |
+| [X] | **6/6** | `sumAdc()` — **recursive** | FR-11 | — | Report shows raw sum **363**, average **29 C** |
 
 ### `src/ui.c` — the input layer · 5 functions
 
 | Done | # | Function | FR | Requires | Proof it works |
 |:----:|---|----------|----|----------|----------------|
-| [ ] | **1/5** | `setOccupancy()` | FR-08 | house 1/6 | Menu **3** flips `people: yes/no` — and the lamp does **not** move |
-| [ ] | **2/5** | `setTemperature()` | FR-09 | house 1/6, 2/6 | Menu **4**: `1023` accepted; `2000` and `abc` rejected with the old value intact |
-| [ ] | **3/5** | `switchDevice()` | FR-07 | house 1/6 | Menu **2**: Living lamp flips, tag turns `MAN`, status prints `0b00000101` |
-| [ ] | **4/5** | `houseReport()` | FR-11 | house 2/6, 5/6, 6/6 | Menu **6** shows four bars, hottest `Garage`, coldest `Bedroom` |
-| [ ] | **5/5** | `runAutomation()` | FR-10 | house 3/6, 4/6 | Menu **5** twice → **5 changed, then 0 changed** |
+| [X] | **1/5** | `setOccupancy()` | FR-08 | house 1/6 | Menu **3** flips `people: yes/no` — and the lamp does **not** move |
+| [X] | **2/5** | `setTemperature()` | FR-09 | house 1/6, 2/6 | Menu **4**: `1023` accepted; `2000` and `abc` rejected with the old value intact |
+| [X] | **3/5** | `switchDevice()` | FR-07 | house 1/6 | Menu **2**: Living lamp flips, tag turns `MAN`, status prints `0b00000101` |
+| [X] | **4/5** | `houseReport()` | FR-11 | house 2/6, 5/6, 6/6 | Menu **6** shows four bars, hottest `Garage`, coldest `Bedroom` |
+| [X] | **5/5** | `runAutomation()` | FR-10 | house 3/6, 4/6 | Menu **5** twice → **5 changed, then 0 changed** |
 
 ### Acceptance tests (§7)
 
 | Done | # | Check |
 |:----:|---|-------|
-| [ ] | 1 | Startup: six rooms, all `AUTO`, all lamps off |
-| [ ] | 2 | `5` → 5 rooms change, Garage shows `!! OVERHEAT !!` |
-| [ ] | 3 | `5` again → **`0 room(s) changed`** ← the one people fail |
-| [ ] | 4 | `2` → `0` → `1` → Living lamp flips, room shows `MAN` |
-| [ ] | 5 | `5` → `Living  skipped (MANUAL)`, its lamp stays put |
-| [ ] | 6 | `2` → `0` → `3`, then `5` → Living is back under the rules |
-| [ ] | 7 | `4` → `2` → `1023` → accepted, 499 C, bar full, not overrun |
-| [ ] | 8 | `4` → `2` → `2000` → rejected, temperature unchanged |
-| [ ] | 9 | `4` → `2` → `abc` → rejected, no crash, no menu spin |
-| [ ] | 10 | `2` → room `9` → `No such room.` |
-| [ ] | 11 | `hello` at the menu → `Invalid choice, try again.` once |
-| [ ] | 12 | `6` → counters match the schematic |
+| [X] | 1 | Startup: six rooms, all `AUTO`, all lamps off |
+| [X] | 2 | `5` → 5 rooms change, Garage shows `!! OVERHEAT !!` |
+| [X] | 3 | `5` again → **`0 room(s) changed`** ← the one people fail |
+| [X] | 4 | `2` → `0` → `1` → Living lamp flips, room shows `MAN` |
+| [X] | 5 | `5` → `Living  skipped (MANUAL)`, its lamp stays put |
+| [X] | 6 | `2` → `0` → `3`, then `5` → Living is back under the rules |
+| [X] | 7 | `4` → `2` → `1023` → accepted, 499 C, bar full, not overrun |
+| [X] | 8 | `4` → `2` → `2000` → rejected, temperature unchanged |
+| [X] | 9 | `4` → `2` → `abc` → rejected, no crash, no menu spin |
+| [X] | 10 | `2` → room `9` → `No such room.` |
+| [X] | 11 | `hello` at the menu → `Invalid choice, try again.` once |
+| [X] | 12 | `6` → counters match the schematic |
 
 ### Before you hand it in
 
 | Done | Item |
 |:----:|------|
-| [ ] | Builds with `gcc -std=c99 -Wall -Wextra` and **zero warnings** |
-| [ ] | My name is in the table at the top of this file |
-| [ ] | My name is in `src/house.c` and `src/ui.c` |
-| [ ] | No `float`, no `double`, no `malloc` anywhere |
-| [ ] | `status` is only ever touched through the four bit macros |
-| [ ] | `sumAdc()` is recursive — no loop inside it |
-| [ ] | I did not change anything in `include/` |
-| [ ] | **My answer to the R3 question** (§5) is written below |
-| [ ] | Screenshot 1 — the house after startup |
-| [ ] | Screenshot 2 — an automation pass showing `!! OVERHEAT !!` |
-| [ ] | Screenshot 3 — the house report |
+| [X] | Builds with `gcc -std=c99 -Wall -Wextra` and **zero warnings** |
+| [X] | My name is in the table at the top of this file |
+| [X] | My name is in `src/house.c` and `src/ui.c` |
+| [X] | No `float`, no `double`, no `malloc` anywhere |
+| [X] | `status` is only ever touched through the four bit macros |
+| [X] | `sumAdc()` is recursive — no loop inside it |
+| [X] | I did not change anything in `include/` |
+| [X] | **My answer to the R3 question** (§5) is written below |
+| [X] | Screenshot 1 — the house after startup |
+| [X] | Screenshot 2 — an automation pass showing `!! OVERHEAT !!` |
+| [X] | Screenshot 3 — the house report |
 
 ---
 
@@ -438,7 +438,7 @@ your screen — that column is how it will be marked.
 >
 > Try it, look at the screen, then put it back.
 
-*(write your answer here — a few sentences, in your own words)*
+*(If I move R3 before R1, the Garage lamp will be turned off by R1 because the Garage is empty. R3 turns the lamp on first, but R1 runs after it and turns it off. So R3 must be the last rule to make sure the lamp stays on when the temperature is too high.)*
 
 ---
 
